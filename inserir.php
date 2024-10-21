@@ -3,15 +3,16 @@
 require_once "conexao.php";
 $conexao = conectar();
 
-$usuario = json_decode(file_get_contents("php://input"));
-$sql = "INSERT INTO usuario 
-        (nome, email, senha)
+$carro = json_decode(file_get_contents("php://input"));
+$sql = "INSERT INTO carros 
+        (modelo, marca, ano, preco)
         VALUES 
-        ('$usuario->nome', 
-        '$usuario->email', 
-        '$usuario->senha')";
+        ('$carro->modelo', 
+        '$carro->marca', 
+        '$carro->ano',
+        '$carro->preco')";
 
 executarSQL($conexao, $sql);
 
-$usuario->id_usuario = mysqli_insert_id($conexao);
-echo json_encode($usuario);
+$carro->id_carro = mysqli_insert_id($conexao);
+echo json_encode($carro);

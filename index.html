@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/js.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/js.png" />
     <title>CRUD de Carros</title>
     <!-- Materialize CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-</head>
-<body>
-
-<div class="container">
-    <h2 class="center-align">Gerenciamento de Carros</h2>
-<!-- Formulário -->
-<div class="card">
-    <div class="card-content">
-        <span class="card-title">Adicionar/Editar Carro</span>
-        <form id="carForm">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="center-align">Gerenciamento de Carros</h2>
+      <!-- Formulário -->
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Adicionar/Editar Carro</span>
+          <form id="carForm">
             <div class="input-field">
-                <input id="carBrand" type="text" required>
-                <label for="carBrand">Marca</label>
+              <input id="carBrand" type="text" required />
+              <label for="carBrand">Marca</label>
             </div>
             <div class="input-field">
-                <input id="carModel" type="text" required>
-                <label for="carModel">Modelo</label>
+              <input id="carModel" type="text" required />
+              <label for="carModel">Modelo</label>
             </div>
             <div class="input-field">
-                <input id="carYear" type="number" required>
-                <label for="carYear">Ano</label>
+              <input id="carYear" type="number" required />
+              <label for="carYear">Ano</label>
             </div>
             <div class="input-field">
-                <input id="carPrice" type="number" required>
-                <label for="carPrice">Preço (R$)</label>
+              <input id="carPrice" type="number" required />
+              <label for="carPrice">Preço (R$)</label>
             </div>
-            <input type="hidden" id="carId">
-            <button class="btn waves-effect waves-light" type="submit">Salvar Carro</button>
-        </form>
-    </div>
-</div>
-<!-- Tabela de Carros -->
-<h4 class="center-align">Lista de Carros</h4>
-<table class="highlight responsive-table">
-    <thead>
-        <tr>
+            <input type="hidden" id="carId" />
+            <button class="btn waves-effect waves-light" type="submit">
+              Salvar Carro
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- Tabela de Carros -->
+      <h4 class="center-align">Lista de Carros</h4>
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
             <th>ID</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Ano</th>
             <th>Preço (R$)</th>
             <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody id="carsTable">
-        <!-- Linhas serão geradas dinamicamente -->
-    </tbody>
-</table>
-</div>
+          </tr>
+        </thead>
+        <tbody id="carsTable">
+          <!-- Linhas serão geradas dinamicamente -->
+        </tbody>
+      </table>
+    </div>
 
-<!-- Materialize JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="car-crud.js"></script>
-
-</body>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="car-crud.js"></script>
+  </body>
 </html>
