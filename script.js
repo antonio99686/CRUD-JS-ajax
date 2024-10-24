@@ -81,23 +81,25 @@ function excluir(evt) {
 }
 
 function buscacarro(evt) {
-    let id_carro = evt.currentTarget.dataset.idCarro;
+    let id_carro = evt.currentTarget.id_carro; // Obtém o id_carro do botão clicado
     fetch('buscacarro.php?id_carro=' + id_carro, {
         method: "GET",
         headers: { 'Content-Type': "application/json; charset=UTF-8" }
     })
     .then(response => response.json())
-    .then(carro => preencheForm(carro))
+    .then(carro => preencheForm(carro)) // Preenche o formulário com os dados do carro
     .catch(error => console.log(error));
 }
 
 function preencheForm(carro) {
+    // Preenche os campos do formulário com os valores do carro
     document.getElementsByName("id_carro")[0].value = carro.id_carro;
-    document.getElementsByName("modelo")[0].value = carro.modelo;
     document.getElementsByName("marca")[0].value = carro.marca;
+    document.getElementsByName("modelo")[0].value = carro.modelo;
     document.getElementsByName("ano")[0].value = carro.ano;
     document.getElementsByName("preco")[0].value = carro.preco;
 }
+
 
 function salvarcarro(event) {
     event.preventDefault(); // Previne o comportamento padrão de submissão do formulário
@@ -152,8 +154,7 @@ function alterar(id_carro, modelo, marca, ano, preco) {
     })
     .then(response => response.json())
     .then(carro => {
-        console.log(carro);
-        alterarcarro(carro); // Função para atualizar a linha da tabela
+        alterarcarro(carro); // Atualiza a linha da tabela com os novos dados do carro
     })
     .catch(error => console.error('Erro ao alterar o carro:', error));
 }
