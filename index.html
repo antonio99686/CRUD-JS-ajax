@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD JS</title>
+    <!-- Link do Materialize CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/js.png">
-    <title>CRUD JS com Materialize</title>
-    <!-- Materialize CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-</head>
-
-<body>
-
+  <body>
     <div class="container">
-        <!-- Form Section -->
-        <h4>Cadastro de Carro</h4>
-        <form onsubmit="return salvarcarro(event);" class="row">
-            <div class="input-field col s12">
-                <input id="id_carro" type="number" name="id_carro">
-                <label for="id_carro">ID</label>
-            </div>
+      <h4>Cadastro de Veículos</h4>
+      <form onsubmit="return salvarVeiculo(event);">
+        <div class="input-field">
+          <label for="id_veiculo">ID:</label>
+          <input type="number" id="id_veiculo" name="id_veiculo" />
+        </div>
+        <div class="input-field">
+          <label for="marca">Marca:</label>
+          <input type="text" id="marca" name="marca" required />
+        </div>
+        <div class="input-field">
+          <label for="modelo">Modelo:</label>
+          <input type="text" id="modelo" name="modelo" required />
+        </div>
+        <div class="input-field">
+          <label for="ano">Ano:</label>
+          <input type="date" id="ano" name="ano" required />
+        </div>
+        <div class="input-field">
+          <label for="preco">Preço (R$):</label>
+          <input type="number" id="preco" name="preco" step="0.01" required />
+        </div>
+        <button type="submit" class="btn">Salvar Veículo</button>
+      </form>
 
-            <div class="input-field col s12">
-                <input id="marca" type="text" name="marca">
-                <label for="marca">Marca</label>
-            </div>
+      <br />
 
-            <div class="input-field col s12">
-                <input id="modelo" type="text" name="modelo">
-                <label for="modelo">Modelo</label>
-            </div>
-
-            <div class="input-field col s12">
-                <input id="ano" type="date" name="ano" min="1900" max="2099" step="1">
-                <label for="ano">Ano</label>
-            </div>
-
-            <div class="input-field col s12">
-                <input id="preco" type="number" step="0.01" name="preco">
-                <label for="preco">Preço (R$)</label>
-            </div>
-
-            <div class="input-field col s12">
-                <button type="submit" class="btn waves-effect waves-light">Salvar Carro</button>
-            </div>
-        </form>
-
-        <!-- Table Section -->
-        <h5>Lista de Carros</h5>
-        <table class="striped responsive-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Ano</th>
-                    <th>Preço (R$)</th>
-                    <th colspan="2">Opções</th>
-                </tr>
-            </thead>
-            <tbody id="carro"></tbody>
-        </table>
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Ano</th>
+            <th>Preço (R$)</th>
+            <th colspan="2">Opções</th>
+          </tr>
+        </thead>
+        <tbody id="veiculos"></tbody>
+      </table>
+    </div>
+    <!-- Modal de Confirmação -->
+    <div id="modalExcluir" class="modal">
+      <div class="modal-content">
+        <h5>Confirmar Exclusão</h5>
+        <p>Você tem certeza de que deseja excluir este veículo?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="confirmarExcluir" class="modal-close btn red">
+          Excluir
+        </button>
+        <button class="modal-close btn grey">Cancelar</button>
+      </div>
     </div>
 
-    <!-- Materialize JavaScript -->
+    <!-- Scripts do Materialize CSS e JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        // Necessário para ativar labels em Materialize após DOM carregar
-        document.addEventListener('DOMContentLoaded', function() {
-            M.updateTextFields();
-        });
-    </script>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

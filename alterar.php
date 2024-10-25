@@ -9,7 +9,7 @@ $sql = "UPDATE carros SET
         marca='$carro->marca', 
         ano='$carro->ano',
         preco='$carro->preco'
-        WHERE id_carro=$carro->id_carro";
+        WHERE id_veiculo=$carro->id_carro";
 
 executarSQL($conexao, $sql);
 
