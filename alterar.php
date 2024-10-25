@@ -9,8 +9,8 @@ $sql = "UPDATE carros SET
         marca='$carro->marca', 
         ano='$carro->ano',
         preco='$carro->preco'
-        WHERE id_veiculo=$carro->id_carro";
+        WHERE id_veiculo=$carro->id_veiculo";
 
 executarSQL($conexao, $sql);
 
-echo json_encode($usuario);
+echo json_encode($carro);

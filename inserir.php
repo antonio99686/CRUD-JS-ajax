@@ -14,5 +14,5 @@ $sql = "INSERT INTO carros
 
 executarSQL($conexao, $sql);
 
-$carro->id_carro = mysqli_insert_id($conexao);
+$carro->id_veiculo = mysqli_insert_id($conexao);
 echo json_encode($carro);

@@ -1,9 +1,9 @@
 <?php
 
-$id_carro = $_GET['id_carro'];
+$id_veiculo = $_GET['id_veiculo'];
 
 require_once "conexao.php";
 $conexao = conectar();
-$sql = "DELETE FROM carros WHERE id_veiculo = $id_carro";
+$sql = "DELETE FROM carros WHERE id_veiculo = $id_veiculo";
 $retorno = executarSQL($conexao, $sql);
 echo json_encode($retorno);

@@ -1,17 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     listarTodos();
+    const modals = document.querySelectorAll('.modal');
+    M.Modal.init(modals); // Inicializa todos os modais no documento
 });
 
+let idVeiculoParaExcluir = null;
+
 function listarTodos() {
-    fetch("listar.php",
-        {
-            method: "GET",
-            headers: { 'Content-Type': "application/json; charset=UTF-8" }
-        }
-    )
-        .then(response => response.json())
-        .then(veiculos => inserirVeiculos(veiculos))
-        .catch(error => console.log(error));
+    fetch("listar.php", {
+        method: "GET",
+        headers: { 'Content-Type': "application/json; charset=UTF-8" }
+    })
+    .then(response => response.json())
+    .then(veiculos => inserirVeiculos(veiculos))
+    .catch(error => console.log(error));
 }
 
 function inserirVeiculos(veiculos) {
@@ -33,18 +35,22 @@ function inserirVeiculo(veiculo) {
     tdAno.innerHTML = veiculo.ano;
     let tdPreco = document.createElement('td');
     tdPreco.innerHTML = veiculo.preco;
+
     let tdAlterar = document.createElement('td');
     let btnAlterar = document.createElement('button');
     btnAlterar.innerHTML = "Alterar";
-    btnAlterar.addEventListener("click", buscaVeiculo, false);
+    btnAlterar.className = "btn blue";
+        btnAlterar.addEventListener("click", buscaVeiculo, false);
     btnAlterar.id_veiculo = veiculo.id_veiculo;
     tdAlterar.appendChild(btnAlterar);
+
     let tdExcluir = document.createElement('td');
     let btnExcluir = document.createElement('button');
-    btnExcluir.addEventListener("click", excluir, false);
-    btnExcluir.id_veiculo = veiculo.id_veiculo;
     btnExcluir.innerHTML = "Excluir";
+    btnExcluir.className = "btn red";
+    btnExcluir.addEventListener("click", () => abrirModalExcluir(veiculo.id_veiculo), false);
     tdExcluir.appendChild(btnExcluir);
+
     tr.appendChild(tdId);
     tr.appendChild(tdMarca);
     tr.appendChild(tdModelo);
@@ -53,22 +59,6 @@ function inserirVeiculo(veiculo) {
     tr.appendChild(tdAlterar);
     tr.appendChild(tdExcluir);
     tbody.appendChild(tr);
-}
-
-function excluir(evt) {
-    let id_veiculo = evt.currentTarget.id_veiculo;
-    let excluir = confirm("Você tem certeza que deseja excluir este veículo?");
-    if (excluir == true) {
-        fetch('excluir.php?id_veiculo=' + id_veiculo,
-            {
-                method: "GET",
-                headers: { 'Content-Type': "application/json; charset=UTF-8" }
-            }
-        )
-            .then(response => response.json())
-            .then(retorno => excluirVeiculo(retorno, id_veiculo))
-            .catch(error => console.log(error));
-    }
 }
 
 function abrirModalExcluir(id_veiculo) {
@@ -80,7 +70,7 @@ function abrirModalExcluir(id_veiculo) {
 document.getElementById('confirmarExcluir').addEventListener("click", () => {
     if (idVeiculoParaExcluir !== null) {
         excluirVeiculo(idVeiculoParaExcluir);
-        idVeiculoParaExcluir = null; // Reseta o ID
+        idVeiculoParaExcluir = null; // Reseta o ID após a exclusão
     }
 });
 
@@ -103,8 +93,9 @@ function excluirVeiculo(id_veiculo) {
     })
     .catch(error => console.log(error));
 }
+
 function alterarVeiculo(veiculo) {
-    let tbody = document.getElementById('veiculos');
+    let tbody = document.getElementById("veiculos");
     for (const tr of tbody.children) {
         if (tr.children[0].innerHTML == veiculo.id_veiculo) {
             tr.children[1].innerHTML = veiculo.marca;
@@ -117,23 +108,28 @@ function alterarVeiculo(veiculo) {
 
 function buscaVeiculo(evt) {
     let id_veiculo = evt.currentTarget.id_veiculo;
-    fetch('buscaVeiculo.php?id_veiculo=' + id_veiculo,
-        {
-            method: "GET",
-            headers: { 'Content-Type': "application/json; charset=UTF-8" }
-        }
-    )
-        .then(response => response.json())
-        .then(veiculo => preencheForm(veiculo))
-        .catch(error => console.log(error));
+    fetch("buscaVeiculo.php?id_veiculo=" + id_veiculo, {
+        method: "GET",
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
+    })
+    .then((response) => response.json())
+    .then((veiculo) => preencheForm(veiculo))
+    .catch((error) => console.log(error));
 }
-
 function preencheForm(veiculo) {
-    document.getElementsByName("id_veiculo")[0].value = veiculo.id_veiculo;
-    document.getElementsByName("marca")[0].value = veiculo.marca;
-    document.getElementsByName("modelo")[0].value = veiculo.modelo;
-    document.getElementsByName("ano")[0].value = veiculo.ano;
-    document.getElementsByName("preco")[0].value = veiculo.preco;
+    document.getElementById("id_veiculo").value = veiculo.id_veiculo;
+    document.getElementById("marca").value = veiculo.marca;
+    document.getElementById("modelo").value = veiculo.modelo;
+    document.getElementById("ano").value = veiculo.ano;
+    document.getElementById("preco").value = veiculo.preco;
+
+    // Update the labels
+    M.updateTextFields();
+
+    // Open the modal
+    var elem = document.querySelector('#editModal');
+    var instance = M.Modal.getInstance(elem);
+    instance.open();
 }
 
 function salvarVeiculo(event) {
@@ -149,42 +145,38 @@ function salvarVeiculo(event) {
     } else {
         alterar(id_veiculo, marca, modelo, ano, preco);
     }
-    document.getElementsByTagName('form')[0].reset();
+    document.getElementsByTagName("form")[0].reset();
 }
 
 function cadastrar(marca, modelo, ano, preco) {
-    fetch('inserir.php',
-        {
-            method: 'POST',
-            body: JSON.stringify({
-                marca: marca,
-                modelo: modelo,
-                ano: ano,
-                preco: preco
-            }),
-            headers: { 'Content-Type': "application/json; charset=UTF-8" }
-        }
-    )
-        .then(response => response.json())
-        .then(veiculo => inserirVeiculo(veiculo))
-        .catch(error => console.log(error));
+    fetch("inserir.php", {
+        method: "POST",
+        body: JSON.stringify({
+            marca: marca,
+            modelo: modelo,
+            ano: ano,
+            preco: preco,
+        }),
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
+    })
+    .then((response) => response.json())
+    .then((veiculo) => inserirVeiculo(veiculo))
+    .catch((error) => console.log(error));
 }
 
 function alterar(id_veiculo, marca, modelo, ano, preco) {
-    fetch('alterar.php',
-        {
-            method: 'POST',
-            body: JSON.stringify({
-                id_veiculo: id_veiculo,
-                marca: marca,
-                modelo: modelo,
-                ano: ano,
-                preco: preco
-            }),
-            headers: { 'Content-Type': "application/json; charset=UTF-8" }
-        }
-    )
-        .then(response => response.json())
-        .then(veiculo => alterarVeiculo(veiculo))
-        .catch(error => console.log(error));
+    fetch("alterar.php", {
+        method: "POST",
+        body: JSON.stringify({
+            id_veiculo: id_veiculo,
+            marca: marca,
+            modelo: modelo,
+            ano: ano,
+            preco: preco,
+        }),
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
+    })
+    .then((response) => response.json())
+    .then((veiculo) => alterarVeiculo(veiculo))
+    .catch((error) => console.log(error));
 }

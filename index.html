@@ -28,7 +28,7 @@
           <input type="text" id="modelo" name="modelo" required />
         </div>
         <div class="input-field">
-          <label for="ano">Ano:</label>
+          <label for="">Ano:</label>
           <input type="date" id="ano" name="ano" required />
         </div>
         <div class="input-field">
@@ -54,19 +54,17 @@
         <tbody id="veiculos"></tbody>
       </table>
     </div>
-    <!-- Modal de Confirmação -->
-    <div id="modalExcluir" class="modal">
-      <div class="modal-content">
+   <!-- Modal de Confirmação -->
+<div id="modalExcluir" class="modal">
+    <div class="modal-content">
         <h5>Confirmar Exclusão</h5>
         <p>Você tem certeza de que deseja excluir este veículo?</p>
-      </div>
-      <div class="modal-footer">
-        <button id="confirmarExcluir" class="modal-close btn red">
-          Excluir
-        </button>
-        <button class="modal-close btn grey">Cancelar</button>
-      </div>
     </div>
+    <div class="modal-footer">
+        <button id="confirmarExcluir" class="modal-close btn red">Excluir</button>
+        <button class="modal-close btn green">Cancelar</button>
+    </div>
+</div>
 
     <!-- Scripts do Materialize CSS e JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
