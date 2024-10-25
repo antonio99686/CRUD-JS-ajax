@@ -98,6 +98,9 @@ function excluirVeiculo(id_veiculo) {
       }
     })
     .catch((error) => console.log(error));
+      // Após a exclusão, exibe o toast de exclusão com sucesso
+      M.toast({html: 'Veículo excluído com sucesso!', classes: 'red', displayLength: 4000});
+      
 }
 
 function alterarVeiculo(veiculo) {
