@@ -1,12 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/js.png">
-  <title>Carros</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="shortcut icon" href="img/sport-car.png" />
+    <title>Carros</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="blue-grey darken-3">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">Carros</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#modelos">Modelos</a></li>
+          <li><a href="#marcas">Marcas</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="cad/index.html">Cadatrar</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="parallax-container">
+      <div class="parallax">
+        <img src="img/IA.webp" alt="Banner Carros" />
+      </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+      <h2 class="center-align">Bem-vindo ao Mundo dos Carros!</h2>
+      <p class="flow-text center-align">
+        Explore os melhores modelos e marcas de carros. Confira as últimas
+        novidades e fique por dentro do universo automotivo.
+      </p>
+
+      <!-- Seção de Modelos -->
+      <div id="modelos" class="section">
+        <h3>Modelos Populares</h3>
+        <div class="row">
+          <div class="col s12 m6 l4">
+            <div class="card">
+              <div class="card-image">
+                <img src="img/golzinho.jpeg" alt="Modelo 1" />
+                <span class="card-title">Modelo 1</span>
+              </div>
+              <div class="card-content">
+                <p>
+                  O Gol Quadrado, famoso pela sua robustez e design icônico, é
+                  uma versão clássica do Volkswagen Gol produzida entre os anos
+                  1980 e início dos anos 1990. Ele ganhou esse apelido por suas
+                  linhas retas e formato "quadrado," que o diferenciam das
+                  versões posteriores. Confiável e de manutenção simples, o Gol
+                  Quadrado é valorizado por entusiastas de carros antigos e é
+                  lembrado pelo desempenho ágil, especialmente nas versões GT e
+                  GTI, que marcaram época como esportivos acessíveis.
+                </p>
+              </div>
+              <div class="card-action">
+                <a href="#">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- modelo 2 -->
+          <div class="col s12 m6 l4">
+            <div class="card">
+              <div class="card-image">
+                <img src="img/celtajpg.jpg" alt="Modelo 2" />
+                <span class="card-title">Modelo 1</span>
+              </div>
+              <div class="card-content">
+                <p>
+                  Celta 2012 O Chevrolet Celta 2012 é um hatchback compacto que
+                  combina praticidade, economia de combustível e um design
+                  moderno. Com um motor eficiente de 1.0 ou 1.4 litros, oferece
+                  um bom equilíbrio entre desempenho e consumo, tornando-o uma
+                  opção popular entre os motoristas urbanos. O interior do Celta
+                  é funcional, com espaço suficiente para quatro ocupantes e um
+                  porta-malas que atende bem às necessidades do dia a dia. O
+                  painel é simples, mas bem distribuído, oferecendo uma
+                  experiência de condução confortável. Entre os recursos
+                  disponíveis, destacam-se o ar-condicionado, direção hidráulica
+                  e sistema de som, dependendo da versão escolhida. Com um bom
+                  desempenho em cidade e estrada, além de um custo de manutenção
+                  acessível, o Celta 2012 é ideal para quem busca um carro
+                  prático, econômico e confiável.
+                </p>
+              </div>
+              <div class="card-action">
+                <a href="#">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- modelo 3 -->
+          <div class="col s12 m6 l4">
+            <div class="card">
+              <div class="card-image">
+                <img src="img/s10.jpg" alt="Modelo 3" />
+                <span class="card-title">Modelo 1</span>
+              </div>
+              <div class="card-content">
+                <p>
+                  A Chevrolet S10 2018 é uma picape que redefine a versatilidade
+                  e a robustez em um só veículo. Com um design imponente e
+                  musculoso, a S10 é uma verdadeira musa do asfalto e da terra,
+                  pronta para enfrentar qualquer aventura, seja na cidade ou em
+                  trilhas mais desafiadoras. Equipadas com motores potentes, que
+                  vão desde o 2.5 flex até o robusto 2.8 turbo diesel, essas
+                  máquinas não só garantem um desempenho excepcional, mas também
+                  a capacidade de transportar cargas pesadas sem perder a
+                  elegância.
+                </p>
+              </div>
+              <div class="card-action">
+                <a href="#">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- Adicione mais cartões para outros modelos -->
+        </div>
+      </div>
+
+      <!-- Seção de Marcas -->
+      <div id="marcas" class="section">
+        <h3>Principais Marcas</h3>
+        <ul class="collection">
+          <li class="collection-item">Volkswagen</li>
+          <li class="collection-item">Ford</li>
+          <li class="collection-item">Toyota</li>
+          <!-- Adicione mais marcas -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Parallax de Imagem Secundária -->
+    <div class="parallax-container">
+      <div class="parallax">
+        <img src="img/IA.webp" alt="Imagem Carros 2" />
+      </div>
+    </div>
+
+    <!-- Seção de Contato -->
+    <div id="contato" class="container section">
+      <h3 class="center-align">Contato</h3>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12 m6">
+              <input type="text" id="nome" name="nome" />
+              <label for="nome">Nome</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input type="email" id="email" name="email" />
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea
+                id="mensagem"
+                class="materialize-textarea"
+                name="mensagem"
+              ></textarea>
+              <label for="mensagem">Mensagem</label>
+            </div>
+          </div>
+          <button
+            class="btn waves-effect waves-light blue-grey darken-3"
+            type="submit"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer blue-grey darken-3">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Carros</h5>
+            <p class="grey-text text-lighten-4">
+              Explore os melhores modelos e marcas.
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li>
+                <a class="grey-text text-lighten-3" href="#modelos">Modelos</a>
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="#marcas">Marcas</a>
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="#contato">Contato</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">© 2024 Carros</div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".parallax");
+        M.Parallax.init(elems);
+      });
+    </script>
+  </body>
 </html>

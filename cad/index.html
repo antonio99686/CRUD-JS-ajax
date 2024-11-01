@@ -1,74 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CRUD JS</title>
-    <!-- Link do Materialize CSS -->
-    <link rel="shortcut icon" href="../img/js.png">
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-      rel="stylesheet"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Veículos</title>
+  <link rel="shortcut icon" href="../img/sport-car.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
 
-  <body>
-    <div class="container">
-      <h4>Cadastro de Veículos</h4>
-      <form onsubmit="return salvarVeiculo(event);">
-        <div class="input-field">
-          <label for="id_veiculo">ID:</label>
-          <input type="number" id="id_veiculo" name="id_veiculo" />
-        </div>
-        <div class="input-field">
-          <label for="marca">Marca:</label>
-          <input type="text" id="marca" name="marca" required />
-        </div>
-        <div class="input-field">
-          <label for="modelo">Modelo:</label>
-          <input type="text" id="modelo" name="modelo" required />
-        </div>
-        <div class="input-field">
-          <label for="">Ano:</label>
-          <input type="date" id="ano" name="ano" required />
-        </div>
-        <div class="input-field">
-          <label for="preco">Preço (R$):</label>
-          <input type="number" id="preco" name="preco" step="0.01" required />
-        </div>
-        <button type="submit" class="btn">Salvar Veículo</button>
-      </form>
-
-      <br />
-
-      <table class="highlight">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Ano</th>
-            <th>Preço (R$)</th>
-            <th colspan="2">Opções</th>
-          </tr>
-        </thead>
-        <tbody id="veiculos"></tbody>
-      </table>
+<body>
+  <!-- Navbar -->
+  <nav class="blue-grey darken-3">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">Cadastro de Veículos</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#cadastro">Cadastro</a></li>
+        <li><a href="#veiculos">Veículos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
     </div>
-   <!-- Modal de Confirmação -->
-<div id="modalExcluir" class="modal">
+  </nav>
+
+  <!-- Banner Parallax -->
+  <div class="parallax-container">
+    <div class="parallax"><img src="../img/banner-carros.jpg" alt="Banner de Carros"></div>
+  </div>
+
+  <!-- Seção de Cadastro de Veículos -->
+  <div id="cadastro" class="container section">
+    <h4 class="center-align">Cadastro de Veículos</h4>
+    <form onsubmit="return salvarVeiculo(event);">
+      <div class="input-field">
+        <input type="number" id="id_veiculo" name="id_veiculo">
+        <label for="id_veiculo">ID:</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="marca" name="marca" required>
+        <label for="marca">Marca:</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="modelo" name="modelo" required>
+        <label for="modelo">Modelo:</label>
+      </div>
+      <div class="input-field">
+        <input type="date" id="ano" name="ano" required>
+        <label for="ano">Ano:</label>
+      </div>
+      <div class="input-field">
+        <input type="number" id="preco" name="preco" step="0.01" required>
+        <label for="preco">Preço (R$):</label>
+      </div>
+      <button type="submit" class="btn blue-grey darken-3 waves-effect waves-light">Salvar Veículo</button>
+      <a href="javascript:history.back()" class="btn waves-effect waves-light red" style="margin-left: 10px;">Voltar</a>
+    </form>
+  </div>
+
+  <!-- Lista de Veículos -->
+  <div class="container section">
+    <h5>Veículos Cadastrados</h5>
+    <table class="highlight centered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Ano</th>
+          <th>Preço (R$)</th>
+          <th colspan="2">Opções</th>
+        </tr>
+      </thead>
+      <tbody id="veiculos"></tbody>
+    </table>
+  </div>
+
+  <!-- Modal de Confirmação -->
+  <div id="modalExcluir" class="modal">
     <div class="modal-content">
-        <h5>Confirmar Exclusão</h5>
-        <p>Você tem certeza de que deseja excluir este veículo?</p>
+      <h5>Confirmar Exclusão</h5>
+      <p>Você tem certeza de que deseja excluir este veículo?</p>
     </div>
     <div class="modal-footer">
-        <button id="confirmarExcluir" class="modal-close btn red">Excluir</button>
-        <button class="modal-close btn green">Cancelar</button>
+      <button id="confirmarExcluir" class="modal-close btn red">Excluir</button>
+      <button class="modal-close btn green">Cancelar</button>
     </div>
-</div>
+  </div>
 
-    <!-- Scripts do Materialize CSS e JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <!-- Parallax de Imagem Secundária -->
+  <div class="parallax-container">
+    <div class="parallax"><img src="../img/banner-carros2.jpg" alt="Banner de Carros 2"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer blue-grey darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Cadastro de Veículos</h5>
+          <p class="grey-text text-lighten-4">Gerencie seu inventário de veículos com facilidade.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#cadastro">Cadastro</a></li>
+            <li><a class="grey-text text-lighten-3" href="#veiculos">Veículos</a></li>
+            <li><a class="grey-text text-lighten-3" href="#contato">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2024 Cadastro de Veículos
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts do Materialize CSS e JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elemsParallax = document.querySelectorAll('.parallax');
+      var elemsModal = document.querySelectorAll('.modal');
+      M.Parallax.init(elemsParallax);
+      M.Modal.init(elemsModal);
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
 </html>
