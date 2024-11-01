@@ -19,10 +19,21 @@
           <li><a href="#modelos">Modelos</a></li>
           <li><a href="#marcas">Marcas</a></li>
           <li><a href="#contato">Contato</a></li>
-          <li><a href="cad/index.html">Cadatrar</a></li>
+          <li><a href="cad/index.html">Cadastrar</a></li>
         </ul>
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger show-on-small">
+          <i class="material-icons">menu</i>
+        </a>
       </div>
     </nav>
+
+    <!-- Mobile Navbar -->
+    <ul class="sidenav" id="mobile-nav">
+      <li><a href="#modelos">Modelos</a></li>
+      <li><a href="#marcas">Marcas</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="cad/index.html">Cadastrar</a></li>
+    </ul>
 
     <!-- Banner -->
     <div class="parallax-container">
@@ -151,11 +162,11 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12 m6">
-              <input type="text" id="nome" name="nome" />
+              <input type="text" id="nome" name="nome" required />
               <label for="nome">Nome</label>
             </div>
             <div class="input-field col s12 m6">
-              <input type="email" id="email" name="email" />
+              <input type="email" id="email" name="email" required />
               <label for="email">Email</label>
             </div>
           </div>
@@ -165,6 +176,7 @@
                 id="mensagem"
                 class="materialize-textarea"
                 name="mensagem"
+                required
               ></textarea>
               <label for="mensagem">Mensagem</label>
             </div>
@@ -206,15 +218,19 @@
         </div>
       </div>
       <div class="footer-copyright">
-        <div class="container">© 2024 Carros</div>
+        <div class="container">
+          © 2024 Carros. Todos os direitos reservados.
+        </div>
       </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".parallax");
-        M.Parallax.init(elems);
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems);
+        var parallaxElems = document.querySelectorAll(".parallax");
+        var parallaxInstances = M.Parallax.init(parallaxElems);
       });
     </script>
   </body>
