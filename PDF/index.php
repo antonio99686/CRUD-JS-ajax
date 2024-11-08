@@ -68,6 +68,9 @@ if ($result->num_rows > 0) {
 
     // Loop para percorrer os resultados e gerar as linhas da tabela
     while ($dados = $result->fetch_assoc()) {
+        //Formatar a data
+        $data = date("d/m/Y", strtotime($dados['ano']));
+
         // Converte o valor de 'preco' para float
         $preco = number_format(floatval($dados['preco']), 2, ',', '.');
         $html .= "
@@ -75,7 +78,7 @@ if ($result->num_rows > 0) {
         <td>" . $dados['id_veiculo'] . "</td>
         <td>" . $dados['marca'] . "</td>
         <td>" . $dados['modelo'] . "</td>
-        <td>" . $dados['ano'] . "</td>
+        <td>" . $data . "</td>
         <td>R$ " . $preco . "</td>
     </tr>";
     }
