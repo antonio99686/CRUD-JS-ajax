@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 31-Out-2024 às 13:14
+-- Tempo de geração: 14-Nov-2024 às 19:47
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -35,22 +35,31 @@ CREATE TABLE IF NOT EXISTS `carros` (
   `ano` date NOT NULL,
   `preco` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_veiculo`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `carros`
 --
 
 INSERT INTO `carros` (`id_veiculo`, `modelo`, `marca`, `ano`, `preco`) VALUES
+(14, 'Santa Fe', 'Hyundai', '0000-00-00', '180000'),
+(13, 'Fusion', 'Ford', '0000-00-00', '130000'),
+(12, 'HB20', 'Hyundai', '0000-00-00', '60000'),
+(11, 'Corolla', 'Toyota', '0000-00-00', '115000'),
+(2, 'Civic', 'Honda', '0000-00-00', '95000'),
+(3, 'Focus', 'Ford', '0000-00-00', '80000'),
+(4, 'Onix', 'Chevrolet', '0000-00-00', '70000'),
+(5, 'Gol', 'Volkswagen', '0000-00-00', '65000'),
 (10, 'Kick', 'Nissan', '5555-05-22', '85000'),
 (9, 'Celerio', 'Suzuki', '0000-00-00', '55000'),
 (8, '3', 'BMW', '0000-00-00', '120000'),
 (7, 'A4', 'Audi', '0000-00-00', '150000'),
 (6, 'Fusca', 'Volkswagen', '0000-00-00', '30000'),
-(5, 'Gol', 'Volkswagen', '0000-00-00', '65000'),
-(4, 'Onix', 'Chevrolet', '0000-00-00', '70000'),
-(3, 'Focus', 'Ford', '0000-00-00', '80000'),
-(2, 'Civic', 'Honda', '0000-00-00', '95000');
+(16, 'Civic', 'Honda', '0000-00-00', '105000'),
+(17, 'Compass', 'Jeep', '0000-00-00', '140000'),
+(18, 'Tucson', 'Hyundai', '0000-00-00', '160000'),
+(19, 'Renegade', 'Jeep', '0000-00-00', '90000'),
+(20, 'Kona', 'Hyundai', '0000-00-00', '110000');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
